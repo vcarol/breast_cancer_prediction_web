@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Clasificación de ecografías mamarias</title>
+</head>
+<body>
+    <main class="container">
+        <img class="icon" src="../static/icon-cancer.png" alt="icono cancer">
+        <div class="showcase">
+            <h1>Clasificación de imágenes de ecografías mamarias mediante una red neuronal</h1>
+            <p>Este proyecto utiliza un modelo de red neuronal para clasificar imágenes de ecografías mamarias en tres categorías:
+                <br><strong>Benigna, Maligna y Normal</strong>.
+                <br>Actualmente, la precisión del modelo es: 67.09 %.
+            </p>
+            <a href="https://colab.research.google.com/drive/1dIXyRgV4inreiS_KVja4_NFsx-NO0h3L?usp=sharing#scrollTo=turhhGIXH8wC">Link al colab del modelo</a>
+        </div>
+
+        <div class="demo">
+            <h2>Mostrar Ejemplo</h2>
+            <p>Selecciona uno de los ejemplos predefinidos del dataset para ver cómo funciona la predicción.</p>
+            <form action="/" method="post">
+                <select name="example">
+                    <option value="example1">Ejemplo 1</option>
+                    <option value="example2">Ejemplo 2</option>
+                    <option value="example3">Ejemplo 3</option>
+                </select>
+                <button type="submit">Mostrar Ejemplo</button>
+            </form>
+        </div>
+
+        <p>La funcionalidad de carga de imágenes está desactivada mientras mejoramos la precisión del modelo.</p>
+        <div class="off">
+            <h2>Subir Imagen</h2>
+            <form>
+                <input type="file" name="file" disabled>
+                <input type="submit" value="Subir" disabled>
+            </form>
+        </div>
+
+        <div class="info">
+            <h2>Nota Importante</h2>
+            <p>Esta herramienta es un apoyo complementario y no sustituye el diagnóstico médico profesional. <br>Los resultados proporcionados por el modelo deben ser interpretados por un médico.</p>
+        </div>
+    </main>
+    <footer>
+        <p>Trabajo Final Tecnicatura en Ciencia de Datos e Inteligencia Artificial - 2024</p>
+    </footer>
+</body>
+</html>
