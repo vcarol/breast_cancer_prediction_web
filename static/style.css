@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap');
+
+
+body {
+    font-family: "DM Sans", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f1ed;
+    color: #6260dc;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.container .icon {
+    margin-top: 4rem;
+    width: 40px;
+    height: auto;
+}
+.container p {
+    font-size: 20px;
+}
+.showcase {
+    margin-bottom: 4rem;
+}
+.showcase h1 {
+    font-size: 48px;
+    margin-top: 0;
+}
+.showcase p {
+    font-size: 20px;
+}
+.showcase a {
+    font-weight: bold;
+    color: #dba6c6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.showcase a:hover {
+    text-decoration: none;
+}
+
+.off {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 3px dotted #dba6c6;
+    border-radius: 20px;
+    color: #c0bfc0;
+    margin-bottom: 4rem;
+}
+.off h2 {
+    margin-top: 0;
+}
+
+.demo {
+    background-color: #fff;
+    padding: 40px 20px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    margin-bottom: 4rem;
+}
+
+form button {
+    background-color: #6260dc;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+
+}
+form select {
+  /* Reset */
+  appearance: none;
+  border: 1px solid #6260dc;
+  outline: 0;
+  font-size: 15px;
+    color: #6260dc;
+    font-weight: bold;
+  width: 15rem;
+  padding: 1rem 4rem 1rem 1rem;
+  border-radius: 0.25em;
+  cursor: pointer;
+    background: #f4f1ed ;
+}
+
+.info {
+    background: #dba6c6;
+    color: #fff;
+    padding: 2rem;
+    border: 1px solid #dba6c6;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+.info p {
+    font-size: 17px;
+}
+
+footer {
+    text-align: center;
+    font-weight: bold;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+
+@media (max-width: 600px) {
+    .showcase h1 {
+        font-size: 25px;
+    }
+    .container .icon {
+        width: 30px;
+        height: auto;
+    }
+    form {
+        flex-direction: column;
+    }
+}
