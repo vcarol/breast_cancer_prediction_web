@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+    <title>Resultado de la Predicción</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado de la predicción</h1>
+        <img src="{{ image_file }}" alt="ecografia">
+        <div class="result">
+            <h2>{{ result }}</h2>
+            <p class="confidence">Confianza: {{ confidence * 100 }}%</p>
+        </div>
+
+        <div class="explanation">
+            {% if result == 'Benigna' %}
+                <p>Esta categoría indica que la imagen de la ecografía muestra características típicas de tejido sano o anomalías no cancerosas.</p>
+                <p><strong>Explicación:</strong> Esto señala que la ecografía no muestra signos de cáncer, y cualquier anomalía presente es probable que no sea cancerosa.</p>
+            {% elif result == 'Maligna' %}
+                <p>Esta categoría sugiere la presencia de características asociadas con posibles anomalías cancerosas o malignas en la imagen de la ecografía.</p>
+                <p><strong>Explicación:</strong> Esto sugiere que la ecografía muestra características que podrían ser indicativas de cáncer y debe ser evaluada más a fondo por un especialista.</p>
+            {% elif result == 'Normal' %}
+                <p>Esta categoría sugiere que la imagen de la ecografía no muestra signos evidentes de anomalías o patologías.</p>
+                <p><strong>Explicación:</strong> Esto indica que la ecografía parece normal, sin signos evidentes de cualquier anomalía.</p>
+            {% endif %}
+        </div>
+
+        <div class="info">
+            <p>La confianza indica cuánto el modelo está seguro de su predicción. Un porcentaje más alto significa mayor certeza en la predicción, mientras que un porcentaje más bajo indica menor certeza.</p>
+        </div>
+
+        <a href="/">Subir otra imagen</a>
+    </div>
+</body>
+</html>
