@@ -21,7 +21,9 @@
         <div class="demo">
             <h2>Mostrar Ejemplo</h2>
             <p>Selecciona uno de los ejemplos predefinidos del dataset para ver cómo funciona la predicción.</p>
-            <form action="/" method="post">
+            <p id="loading-message" style="display: none;">Un momento, estamos cargando el modelo...</p>
+
+            <form id="upload-form" action="/" method="post" style="display: none;">
                 <select name="example">
                     <option value="example1">Ejemplo 1</option>
                     <option value="example2">Ejemplo 2</option>
@@ -48,5 +50,25 @@
     <footer>
         <p>Trabajo Final Tecnicatura en Ciencia de Datos e Inteligencia Artificial - 2024</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mostrar el mensaje de carga
+            document.getElementById('loading-message').style.display = 'block';
+
+            // Verificar periódicamente si el modelo está cargado
+            const checkModelLoaded = setInterval(() => {
+                fetch('/model-status')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.model_loaded) {
+                            clearInterval(checkModelLoaded); // Detener la verificación
+                            document.getElementById('loading-message').style.display = 'none';
+                            document.getElementById('upload-form').style.display = 'block';
+                        }
+                    });
+            }, 90000); // Verifica cada 90 segundos (1 minuto y medio)
+        });
+    </script>
 </body>
 </html>

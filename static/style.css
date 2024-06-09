@@ -96,6 +96,11 @@ form select {
     background: #f4f1ed ;
 }
 
+#loading-message {
+    font-weight: bold;
+    text-transform: underline;
+}
+
 .info {
     background: #dba6c6;
     color: #fff;

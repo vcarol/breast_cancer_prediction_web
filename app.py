@@ -1,30 +1,35 @@
+import threading
 
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, jsonify
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
+import requests
 
 app = Flask(__name__)
+
+dropbox_url = "https://www.dropbox.com/scl/fi/6dy5g2m3yuso5ru9v3xax/modelo_ecografia.h5?rlkey=u52kwi9jlqf6s63euglx21p2y&st=lwqirnmj&dl=1"
+
+# Ruta para guardar el modelo descargado
+model_path = 'model/modelo_ecografia.h5'
+model = None
+model_loaded = False
+
+def download_and_load_model():
+    global model, model_loaded
+    if not os.path.exists(model_path):
+        response = requests.get(dropbox_url)
+        with open(model_path, 'wb') as f:
+            f.write(response.content)
+    model = load_model(model_path)
+    model_loaded = True
+
+# Descargar y cargar el modelo en un hilo separado
+threading.Thread(target=download_and_load_model).start()
+
 #####################
 
-from glob import glob
-
-# Directorio donde se guardan las partes
-parts_dir = 'model/parts'
-
-# Combinar las partes en un solo archivo
-combined_model_path = 'model/modelo_ecografia_reconstruido.h5'
-
-with open(combined_model_path, 'wb') as combined_file:
-    for part_file_path in sorted(glob(os.path.join(parts_dir, 'part_*.h5'))):
-        with open(part_file_path, 'rb') as part_file:
-            combined_file.write(part_file.read())
-
-# Luego, cargar el modelo desde el archivo reconstruido
-model = load_model(combined_model_path)
-
-#####################
 # Cargar el modelo
 #model = load_model('model/modelo_ecografia.h5')
 img_sz = 300
@@ -63,10 +68,12 @@ def upload_file():
 
         predicted_label = class_labels[predicted_class[0]]
 
-
         return render_template('result.html', image_file=filepath, result=predicted_label, confidence=confidence)
     return render_template('index.html')
 
+@app.route('/model-status')
+def model_status():
+    return jsonify({"model_loaded": model_loaded})
 
 if __name__ == '__main__':
     app.run(debug=True)
