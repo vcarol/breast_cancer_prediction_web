@@ -9,7 +9,6 @@ Alumnos/as:
 - KLER, Micaela ( micakler@gmail.com )
 - LAMAS, Liliana Elizabet (lililamase@gmail.com)
 - MECHEDOU, Lamine ( lmechedou@gmail.com )
-- PEVES, Sthepany Carol ( carol.peves@gmail.com)
 
  # Clasificación de imágenes de ecografía mamaria mediante una red neuronal
 El proyecto se centra en la clasificación automática de imágenes de ecografías mamarias para detectar si las lesiones presentes son malignas, benignas o normales. Este tipo de tecnología puede asistir a los profesionales de la salud en el diagnóstico temprano del cáncer de mama, mejorando las tasas de supervivencia mediante la identificación rápida y precisa de lesiones cancerosas. El modelo se entrena utilizando una red neuronal convolucional (CNN) para automatizar el proceso de diagnóstico.
